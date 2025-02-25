@@ -1,5 +1,5 @@
-<script >
-import { computed ,defineProps  } from 'vue';
+<script setup>
+import {computed, defineProps, onMounted, onBeforeMount} from 'vue';
 
 // 定义props
 const props = defineProps({
@@ -17,6 +17,10 @@ const props = defineProps({
 const iconName = computed(() => `#icon-${props.iconClass}`);
 const svgClass = computed(() => `svg-icon ${props.className || ''}`);
 
+
+onMounted(()=>{
+  console.log(iconName.value)
+})
 
 </script>
 
