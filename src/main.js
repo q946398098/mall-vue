@@ -1,22 +1,23 @@
-
+import 'element-plus/dist/index.css'
+import '@/styles/index.scss' // global css
+import App from './App.vue'
+import ElementPlus from 'element-plus'
+import router from './router'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import App from './App.vue'
-import router from './router'
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
 import {registerIcons} from "@/icons/index.js"
+import {createPersistedState} from "pinia-persistedstate-plugin";
 
-import '@/styles/index.scss' // global css
-
-
+console.log('pinia')
 const app = createApp(App)
+const pinia = createPinia()
+const persistedState = createPersistedState();
+pinia.use(persistedState)
+app.use(pinia)
 registerIcons(app)
-app.use(createPinia())
+
 app.use(router)
 app.use(ElementPlus)
 /*注冊icons*/
-
-
-
 app.mount('#app')
+

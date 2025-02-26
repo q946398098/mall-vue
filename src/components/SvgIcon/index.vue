@@ -18,9 +18,7 @@ const iconName = computed(() => `#icon-${props.iconClass}`);
 const svgClass = computed(() => `svg-icon ${props.className || ''}`);
 
 
-onMounted(()=>{
-  console.log(iconName.value)
-})
+
 
 </script>
 
