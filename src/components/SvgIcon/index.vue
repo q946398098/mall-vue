@@ -28,7 +28,7 @@ onMounted(()=>{
 
 <template>
   <svg :class="svgClass" aria-hidden="true">
-    <use :xlink:href="iconName"></use>
+    <use :href="iconName" ></use>
   </svg>
 </template>
 

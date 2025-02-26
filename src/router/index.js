@@ -3,8 +3,8 @@ import LoginView  from '@/views/login/index.vue'
 import Ceshi  from '@/views/ceshi.vue'
 
 export const constantRouterMap = [
-  {path: '/x', component:LoginView},
-  {path: '/', component:Ceshi},
+  {path: '/', component:LoginView},
+  {path: '/x', component:Ceshi},
 ]
 
 
