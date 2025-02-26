@@ -1,32 +1,36 @@
 <template>
-  <scroll-bar>
-    <el-menu
+  <el-scrollbar :height="scrollbarHeight">
+  <el-menu
       mode="vertical"
       :show-timeout="200"
       :collapse="isCollapse"
       background-color="#304156"
       text-color="#bfcbd9"
       active-text-color="#409EFF"
-    >
+  >
       <sidebar-item :routes="routes"></sidebar-item>
-    </el-menu>
-  </scroll-bar>
+   </el-menu>
+  </el-scrollbar>
 </template>
 
 <script setup>
 import SidebarItem from './SidebarItem.vue'
-import ScrollBar from '@/components/ScrollBar/index.vue'
-import {onBeforeMount, reactive, ref} from "vue";
-import {useRouter} from "vue-router";
+import {onMounted, onUnmounted, ref} from "vue";
 const isCollapse = ref(false);
+const scrollbarHeight = ref('100vh'); // 初始值
 
+const updateScrollbarHeight = () => {
+  scrollbarHeight.value = `${window.innerHeight}px`;
+};
 
-onBeforeMount(() => {
-    // console.log(useRouter().options.routes)
-   // this.routes.value = useRouter().options.routes
-})
+onMounted(() => {
+  window.addEventListener('resize', updateScrollbarHeight);
+  updateScrollbarHeight(); // 初始化时设置高度
+});
 
-
+onUnmounted(() => {
+  window.removeEventListener('resize', updateScrollbarHeight);
+});
 
 const routes = [
   {
@@ -1276,5 +1280,14 @@ const routes = [
     "hidden": true
   }
 ];
-
 </script>
+
+<style>
+.el-scrollbar__view {
+  height: 100%;
+}
+.el-menu.el-menu--vertical {
+  height: 100%;
+}
+</style>
+

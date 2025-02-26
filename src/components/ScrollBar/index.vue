@@ -7,12 +7,11 @@
 </template>
 
 <script setup>
-const delta = 15
-
+  console.log(top)
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-@import '../../styles/variables.scss';
+@import '@/styles/variables.scss';
 
 .scroll-container {
   position: relative;
