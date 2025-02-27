@@ -2,11 +2,8 @@
   <el-scrollbar :height="scrollbarHeight">
   <el-menu
       mode="vertical"
-      :show-timeout="200"
+      show-timeout="50"
       :collapse="isCollapse"
-      background-color="#304156"
-      text-color="#bfcbd9"
-      active-text-color="#409EFF"
   >
       <sidebar-item :routes="routes"></sidebar-item>
    </el-menu>
@@ -17,7 +14,7 @@
 import SidebarItem from './SidebarItem.vue'
 import {onMounted, onUnmounted, ref} from "vue";
 const isCollapse = ref(false);
-const scrollbarHeight = ref('100vh'); // 初始值
+const scrollbarHeight = ref('100%'); // 初始值
 
 const updateScrollbarHeight = () => {
   scrollbarHeight.value = `${window.innerHeight}px`;
@@ -1283,11 +1280,7 @@ const routes = [
 </script>
 
 <style>
-.el-scrollbar__view {
-  height: 100%;
-}
-.el-menu.el-menu--vertical {
-  height: 100%;
-}
+
+
 </style>
 

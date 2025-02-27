@@ -1,0 +1,16 @@
+:root {
+    --el-menu-bg-color: #304156 ; /* 浅蓝色 */
+    --el-menu-text-color: #bfcbd9;
+    --el-menu-active-color: #409EFF;
+}
+
+.el-scrollbar__view {
+    height: 100%;
+}
+.el-menu.el-menu--vertical {
+    height: 100%;
+}
+
+.sidebar-container svg{
+    margin-right: 16px;
+}
