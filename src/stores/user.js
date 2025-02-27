@@ -1,8 +1,9 @@
-import {ref} from 'vue'
+import {reactive, ref} from 'vue'
 import { defineStore } from 'pinia'
 
 export const useUserInfoStore  = defineStore('userInfo', () => {
-        const userInfo = ref({})
+        const userInfo = reactive([])
+
         const token = ref('');
 
         const setToken = (newToken) => {
@@ -14,12 +15,14 @@ export const useUserInfoStore  = defineStore('userInfo', () => {
         }
 
         const setUserInfo = (newUserInfo) => {
+
             userInfo.value = newUserInfo
         }
 
         const removeUserInfo = () => {
             userInfo.value = {}
         }
+
 
         return {
             userInfo, setUserInfo, removeUserInfo, token, setToken, removeToken

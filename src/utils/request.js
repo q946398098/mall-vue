@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { ElMessage as Message, ElMessageBox  as MessageBox } from 'element-plus'
 import {useUserInfoStore} from "@/stores/user.js";
+import router from "@/router";
 
 
 // 创建axios实例
@@ -43,9 +44,8 @@ service.interceptors.response.use(
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          store.dispatch('FedLogOut').then(() => {
-            location.reload()// 为了重新实例化vue-router对象 避免bug
-          })
+          console.log("重新登录")
+          router.push('/login')
         })
       }
       return Promise.reject('error')

@@ -47,8 +47,8 @@ const loginRules = reactive({
 
 // 生命周期钩子
 onMounted(() => {
-  loginForm.username =  'admin';
-  loginForm.password =  '';
+  loginForm.username =  'admin1';
+  loginForm.password =  '123456';
 });
 
 // 方法
@@ -61,7 +61,7 @@ const handleLogin = (loginFormRef) => {
     if (valid) {
       login(loginForm.username,loginForm.password).then(res => {
         if (res.code === 200){
-          userStore.setToken(res.data.token);
+          userStore.setToken(res.data.tokenHead + res.data.token);
           router.push('/');
         }
       })

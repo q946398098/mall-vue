@@ -4,8 +4,8 @@ import Layout from '@/views/layout/Layout.vue'
 import Test  from '@/views/test.vue'
 
 export const constantRouterMap = [
-  {path: '/login', component:LoginView},
-  {path: '/test', component:Test},
+  {path: '/login', component:LoginView ,hidden: true},
+  {path: '/test', component:Test,hidden: true},
   {
     path: '',
     component: Layout,
