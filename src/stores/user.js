@@ -1,8 +1,8 @@
 import {reactive, ref} from 'vue'
 import { defineStore } from 'pinia'
 
-export const useUserInfoStore  = defineStore('userInfo', () => {
-        const userInfo = reactive([])
+export const useUserInfoStore  = defineStore('userInfoStore', () => {
+        const userInfo = reactive({})
 
         const token = ref('');
 
@@ -15,7 +15,6 @@ export const useUserInfoStore  = defineStore('userInfo', () => {
         }
 
         const setUserInfo = (newUserInfo) => {
-
             userInfo.value = newUserInfo
         }
 
