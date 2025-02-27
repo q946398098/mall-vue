@@ -7,10 +7,12 @@
           <span>{{ route.meta.title }}</span>
         </template>
         <template v-for="child in route.children" :key="child.path">
-          <el-menu-item v-if="!child.hidden" :index="child.path">
-            <svg-icon v-if="child.meta && child.meta.icon" :icon-class="child.meta.icon"/>
-            <span>{{ child.meta.title }}</span>
-          </el-menu-item>
+          <router-link to="/">
+            <el-menu-item v-if="!child.hidden" :index="child.path">
+                <svg-icon v-if="child.meta && child.meta.icon" :icon-class="child.meta.icon"/>
+                <span>{{ child.meta.title }}</span>
+            </el-menu-item>
+          </router-link>
         </template>
       </el-sub-menu>
       <!-- 单个菜单项 -->
