@@ -3,6 +3,7 @@ import '@/styles/index.scss' // global css
 import App from './App.vue'
 import ElementPlus from 'element-plus'
 import router from './router'
+import '@/router/routerGuard.js';
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import {registerIcons} from "@/icons/index.js"
