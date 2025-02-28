@@ -19,9 +19,9 @@ router.beforeEach((to, from, next) => {
         } else {
             if (userInfo?.userInfo?.roles?.length === 0) {
                 getInfo().then(res => {
-                    res.data.menus = ['dashboard','video','home']
+                    res.data.menus = ['dashboard','video','home','dashboard1','video1','home1']
                     userInfo.setUserInfo(res.data)
-                    adjustRouter(['dashboard','video','home']);
+                    adjustRouter(['dashboard','video','home','dashboard1','video','home1']);
                 })
                 next()
             } else {
@@ -52,7 +52,6 @@ const adjustRouter = function (menus){
             constantRouterMap[k].hidden = false;
         }else{
             constantRouterMap[k].hidden = true;
-            return;
         }
         if (item.children && item.children.length > 0) {
             item.children.forEach((child,kk) => {
@@ -61,7 +60,6 @@ const adjustRouter = function (menus){
                 }else{
                     constantRouterMap[k].children[kk].hidden = true;
                 }
-                console.log('aa',constantRouterMap)
             })
         }
     })

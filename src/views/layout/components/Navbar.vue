@@ -28,6 +28,7 @@ import  hamburger from '@/components/Hamburger/index.vue'
 import {useUserInfoStore} from "@/stores/user.js";
 import {useLayoutStore} from "@/stores/layout.js";
 import {ref} from "vue";
+import router from "@/router";
 
 const layoutStore = useLayoutStore();
 const userStore  = useUserInfoStore();
@@ -36,7 +37,9 @@ const avatar = 'data: image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgMC
 const isActive = ref(layoutStore.sidebarStatus);
 
 const logout = () => {
-
+    router.push('/login');
+    userStore.removeUserInfo();
+    userStore.removeToken();
 }
 
 const toggleClick = function (){

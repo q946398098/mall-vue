@@ -31,9 +31,6 @@
 
 <script setup>
 
-import {onBeforeMount, onMounted, ref} from "vue";
-
-
 const props = defineProps({
   routes: {
     type: Array
@@ -42,10 +39,6 @@ const props = defineProps({
     type: Boolean,
     default: false
   }
-})
-
-onBeforeMount(() => {
-  console.log(props.routes)
 })
 
 </script>
