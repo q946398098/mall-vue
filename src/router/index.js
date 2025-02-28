@@ -30,7 +30,8 @@ export const constantRouterMap = reactive([
     {
       name: 'video',
       hidden: false,
-      path: 'https://www.macrozheng.com/mall/catalog/mall_video.html',
+      path: 'video',
+      component: () => import('@/views/home/index.vue'),
       meta: {title: '视频教程', icon: 'video'}
     },
    ]

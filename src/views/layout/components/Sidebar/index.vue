@@ -14,7 +14,11 @@
 import SidebarItem from './SidebarItem.vue'
 import {onMounted, onUnmounted, computed, ref} from "vue";
 import {constantRouterMap} from "@/router/index.js";
-const isCollapse = ref(false);
+import {useLayoutStore} from "@/stores/layout.js";
+
+const layoutStore = useLayoutStore();
+
+
 const scrollbarHeight = ref('100%'); // 初始值
 
 const updateScrollbarHeight = () => {
@@ -33,6 +37,10 @@ onUnmounted(() => {
 const routes = computed(() => {
    return constantRouterMap
 });
+
+const isCollapse = computed(() => {
+    return layoutStore.sidebarStatus;
+})
 
 </script>
 

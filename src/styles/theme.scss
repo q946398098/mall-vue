@@ -1,5 +1,4 @@
 :root {
-    --el-menu-bg-color: #304156 ; /* 浅蓝色 */
     --el-menu-text-color: #bfcbd9;
     --el-menu-active-color: #409EFF;
 }
@@ -9,15 +8,44 @@
 }
 .el-menu.el-menu--vertical {
     height: 100%;
+    transition: none;
 }
 .sidebar-container{
+    --el-menu-bg-color: #304156 ; /* 浅蓝色 */
     width: 180px !important;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
 }
 
-.sidebar-container svg{
-    margin-right: 16px;
+.main-container{
+    height: 100%;
+    margin-left: 180px;
 }
+
+.hideSidebar{
+    .sidebar-container{
+
+   }
+    .main-container {
+        margin-left: 64px;
+    }
+    .submenu-title-noDropdown {
+        padding-left: 10px !important;
+        position: relative;
+        .el-tooltip {
+            padding: 0 10px !important;
+        }
+    }
+}
+
+
 
 .sidebar-container li {
-    background-color: var(--el-menu-bg-color);
+    background-color: #304156;
 }
+
+
+
+
