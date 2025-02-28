@@ -25,7 +25,6 @@ router.beforeEach((to, from, next) => {
                 })
                 next()
             } else {
-                adjustRouter(userInfo?.userInfo?.menus)
                 next();
             }
         }

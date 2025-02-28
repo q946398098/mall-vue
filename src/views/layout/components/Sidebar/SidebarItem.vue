@@ -31,6 +31,8 @@
 
 <script setup>
 
+import {computed} from "vue";
+
 const props = defineProps({
   routes: {
     type: Array
@@ -41,7 +43,13 @@ const props = defineProps({
   }
 })
 
+computed(() => {
+  console.log('routers',props.routes)
+})
+
 </script>
+
+
 
 <style scoped>
 

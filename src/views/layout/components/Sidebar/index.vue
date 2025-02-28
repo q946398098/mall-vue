@@ -2,7 +2,7 @@
   <el-scrollbar :height="scrollbarHeight">
   <el-menu
       mode="vertical"
-      show-timeout="50"
+      :show-timeout="50"
       :collapse="isCollapse"
   >
       <sidebar-item :routes="routes"></sidebar-item>

@@ -44,7 +44,6 @@ const logout = () => {
 
 const toggleClick = function (){
   layoutStore.setSidebarStatus(!layoutStore.sidebarStatus)
-
   isActive.value = !isActive.value
 }
 

@@ -9,7 +9,10 @@ import { createPinia } from 'pinia'
 import {registerIcons} from "@/icons/index.js"
 import {createPersistedState} from "pinia-persistedstate-plugin";
 
+
 const app = createApp(App)
+
+
 const pinia = createPinia()
 const persistedState = createPersistedState();
 pinia.use(persistedState)
