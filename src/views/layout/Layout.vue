@@ -3,13 +3,21 @@
     <sidebar class="sidebar-container"></sidebar>
     <div class="main-container">
 <!--      <navbar></navbar>-->
-<!--      <app-main></app-main>-->
+      <app-main></app-main>
     </div>
   </div>
 </template>
 
 <script setup>
 import { Navbar, Sidebar, AppMain } from './components'
+import {computed} from "vue";
+
+const classObj = computed(() => {
+  return ''
+})
+
+
+
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>

@@ -1,14 +1,14 @@
 <template>
     <template v-for="route in routes" :key="route.path">
       <!-- 菜单分组 -->
-      <el-sub-menu v-if="route.children && route.children.length > 0" :index="route.path">
+      <el-sub-menu v-if="route.children && route.hidden === false && route.children.length > 0" :index="route.path">
         <template #title> <!--插槽-->
           <svg-icon v-if="route.meta && route.meta.icon" :icon-class="route.meta.icon"/>
           <span>{{ route.meta.title }}</span>
         </template>
         <template v-for="child in route.children" :key="child.path">
-          <router-link to="/">
-            <el-menu-item v-if="!child.hidden" :index="child.path">
+          <router-link v-if="child.hidden === false" to="/">
+            <el-menu-item :index="child.path">
                 <svg-icon v-if="child.meta && child.meta.icon" :icon-class="child.meta.icon"/>
                 <span>{{ child.meta.title }}</span>
             </el-menu-item>

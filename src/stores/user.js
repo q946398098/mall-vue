@@ -2,7 +2,12 @@ import {reactive, ref} from 'vue'
 import { defineStore } from 'pinia'
 
 export const useUserInfoStore  = defineStore('userInfoStore', () => {
-        const userInfo = reactive({})
+        const userInfo = reactive({
+            username: '',
+            roles: [],
+            icon:'',
+            menus: [],
+        })
 
         const token = ref('');
 
@@ -15,11 +20,21 @@ export const useUserInfoStore  = defineStore('userInfoStore', () => {
         }
 
         const setUserInfo = (newUserInfo) => {
-            userInfo.value = newUserInfo
+            userInfo.username = newUserInfo.username;
+            userInfo.roles = newUserInfo.roles;
+            userInfo.icon = newUserInfo.icon;
+            userInfo.menus = newUserInfo.menus; //暂时写死
         }
 
         const removeUserInfo = () => {
-            userInfo.value = {}
+            userInfo.username = '';
+            userInfo.roles = [];
+            userInfo.icon = '';
+            userInfo.menus = [];
+        }
+
+        const setAllowedRoutes = (newAllowedRoutes) => {
+            userInfo.allowedRoutes = newAllowedRoutes
         }
 
 

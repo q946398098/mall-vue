@@ -4,12 +4,14 @@ import NProgress from 'nprogress' // Progress 进度条
 import 'nprogress/nprogress.css'// Progress 进度条样式
 import {useUserInfoStore} from '@/stores/user.js';
 import {getInfo} from '@/api/login.js'
+import {constantRouterMap} from '@/router/index.js';
 
 const whiteList = ['/login'] // 不重定向白名单
-console.log(router)
 router.beforeEach((to, from, next) => {
+
     NProgress.start()
     const userInfo = useUserInfoStore();
+
     if (userInfo.token) {
         if (to.path === '/login') {
             next()
@@ -17,12 +19,14 @@ router.beforeEach((to, from, next) => {
         } else {
             if (userInfo?.userInfo?.roles?.length === 0) {
                 getInfo().then(res => {
-                    console.log(userInfo.userInfo);
+                    res.data.menus = ['dashboard','video','home']
                     userInfo.setUserInfo(res.data)
+                    adjustRouter(['dashboard','video','home']);
                 })
                 next()
             } else {
-                next()
+                adjustRouter(userInfo?.userInfo?.menus)
+                next();
             }
         }
     } else {
@@ -38,3 +42,28 @@ router.beforeEach((to, from, next) => {
 router.afterEach(() => {
     NProgress.done() // 结束Progress
 })
+/**
+ * 调整路由 , 删除没有权限的菜单
+ * @param menus
+ */
+const adjustRouter = function (menus){
+    constantRouterMap.forEach((item,k) => {
+        if (menus.includes(item.name)){
+            constantRouterMap[k].hidden = false;
+        }else{
+            constantRouterMap[k].hidden = true;
+            return;
+        }
+        if (item.children && item.children.length > 0) {
+            item.children.forEach((child,kk) => {
+                if (menus.includes(child.name)){
+                    constantRouterMap[k].children[kk].hidden = false;
+                }else{
+                    constantRouterMap[k].children[kk].hidden = true;
+                }
+                console.log('aa',constantRouterMap)
+            })
+        }
+    })
+    console.log('--xx-',constantRouterMap)
+}

@@ -13,7 +13,7 @@
 <script setup>
 import SidebarItem from './SidebarItem.vue'
 import {onMounted, onUnmounted, computed, ref} from "vue";
-import {useRouter} from "vue-router";
+import {constantRouterMap} from "@/router/index.js";
 const isCollapse = ref(false);
 const scrollbarHeight = ref('100%'); // 初始值
 
@@ -31,7 +31,7 @@ onUnmounted(() => {
 });
 
 const routes = computed(() => {
-   return useRouter().options.routes.filter(item  => item?.meta != undefined);
+   return constantRouterMap
 });
 
 </script>
