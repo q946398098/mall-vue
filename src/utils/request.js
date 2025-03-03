@@ -45,7 +45,7 @@ service.interceptors.response.use(
           type: 'warning'
         }).then(() => {
           console.log("重新登录")
-          router.push('/login')
+          // router.push('/login')
         })
       }
       return Promise.reject('error')
