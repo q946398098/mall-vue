@@ -19,9 +19,8 @@ router.beforeEach((to, from, next) => {
         } else {
             if (userInfo?.userInfo?.roles?.length === 0) {
                 getInfo().then(res => {
-                    res.data.menus = ['dashboard','video','home','dashboard1','video1','home1']
                     userInfo.setUserInfo(res.data)
-                    adjustRouter(['dashboard','video','home','dashboard1','video','home1']);
+                    adjustRouter(res.data.menus);
                 })
                 next()
             } else {

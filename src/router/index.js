@@ -20,50 +20,33 @@ export const constantRouterMap = reactive([
       hidden: false,
       component: () => import('@/views/home/index.vue'),
       meta: {title: '仪表盘', icon: 'dashboard'}
-    },
-    {
-      name: 'document',
-      path: 'https://www.macrozheng.com',
-      hidden: false,
-      meta: {title: '学习教程', icon: 'document'}
-    },
-    {
-      name: 'video',
-      hidden: false,
-      path: 'video',
-      component: () => import('@/views/home/index.vue'),
-      meta: {title: '视频教程', icon: 'video'}
-    },
-   ]
+    }]
   },
   {
-    path: '',
-    component: Layout,
-    name:'home1',
-    redirect: '/dashboard',
+    path:'',
+    name:'teacher',
     hidden: false,
-    meta: {title: '首页', icon: 'home'},
-    children: [{
-      path: 'dashboard1',
-      name: 'dashboard1',
-      hidden: false,
-      component: () => import('@/views/home/index.vue'),
-      meta: {title: '仪表盘', icon: 'dashboard'}
-    },
+    meta:{title: '教程',icon:'document'},
+    children: [
       {
-        name: 'document',
-        path: 'https://www.macrozheng.com',
+        path:'https://router.vuejs.org/zh/guide/',
+        name:'router',
+        meta: {title: 'vue-Router', icon: 'document'},
         hidden: false,
-        meta: {title: '学习教程', icon: 'document'}
       },
       {
-        name: 'video1',
+        name: 'vue',
+        path: 'https://cn.vuejs.org/',
         hidden: false,
-        path: 'video1',
-        component: () => import('@/views/home/index.vue'),
-        meta: {title: '视频教程', icon: 'video'}
+        meta: {title: 'Vue教程', icon: 'document'}
       },
-    ]
+      {
+        name: 'pinia',
+        path: 'https://pinia.vuejs.org/',
+        hidden: false,
+        meta: {title: 'Pinia教程', icon: 'document'}
+      },
+    ],
   }
 ])
 
