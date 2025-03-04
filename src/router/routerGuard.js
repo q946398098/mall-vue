@@ -17,7 +17,6 @@ router.beforeEach((to, from, next) => {
             next()
             NProgress.done()
         } else {
-            console.log('---')
             if (userInfo?.userInfo?.roles?.length === 0) {
                 getInfo().then(res => {
                     res.data.menus = ['home','dashboard','teacher','router','pinia'];

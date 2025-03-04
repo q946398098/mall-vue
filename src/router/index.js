@@ -6,7 +6,7 @@ import {reactive} from "vue";
 import * as test from "node:test";
 import chart from "@/views/home/chart.vue";
 
-export const constantRouterMap = reactive([
+export const constantRouterMap =[
   {path: '/login', component:LoginView , is_menu: false,fl_permission:'Y'},
   {path: '/test', component:Test, is_menu: false,fl_permission:'Y'},
   {
@@ -67,7 +67,7 @@ export const constantRouterMap = reactive([
       },
     ],
   }
-])
+]
 
 
 
