@@ -1,7 +1,7 @@
 <template>
   <el-menu class="navbar" mode="horizontal">
     <hamburger class="hamburger-container" :toggleClick="toggleClick" :isActive="isActive"></hamburger>
-<!--    <breadcrumb></breadcrumb>-->
+    <breadcrumb></breadcrumb>
     <el-dropdown class="avatar-container" trigger="click">
       <div class="avatar-wrapper">
         <img class="user-avatar" :src="avatar">
@@ -24,7 +24,8 @@
 </template>
 
 <script setup>
-import  hamburger from '@/components/Hamburger/index.vue'
+import  hamburger  from '@/components/Hamburger/index.vue'
+import  breadcrumb from '@/components/Breadcrumb/index.vue'
 import {useUserInfoStore} from "@/stores/user.js";
 import {useLayoutStore} from "@/stores/layout.js";
 import {ref} from "vue";
