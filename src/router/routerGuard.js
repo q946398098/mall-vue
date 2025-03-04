@@ -17,13 +17,17 @@ router.beforeEach((to, from, next) => {
             next()
             NProgress.done()
         } else {
+            console.log('---')
             if (userInfo?.userInfo?.roles?.length === 0) {
                 getInfo().then(res => {
+                    res.data.menus = ['home','dashboard','teacher','router','pinia'];
+                    adjustRouter(res.data.menus,constantRouterMap);
+                    res.data.menus = constantRouterMap;//一次性的
                     userInfo.setUserInfo(res.data)
-                    adjustRouter(res.data.menus);
                 })
                 next()
             } else {
+                constantRouterMap.values = userInfo.userInfo.menus;
                 next();
             }
         }
@@ -40,26 +44,28 @@ router.beforeEach((to, from, next) => {
 router.afterEach(() => {
     NProgress.done() // 结束Progress
 })
+
 /**
  * 调整路由 , 删除没有权限的菜单
  * @param menus
  */
-const adjustRouter = function (menus){
-    constantRouterMap.forEach((item,k) => {
-        if (menus.includes(item.name)){
-            constantRouterMap[k].hidden = false;
-        }else{
-            constantRouterMap[k].hidden = true;
-        }
-        if (item.children && item.children.length > 0) {
-            item.children.forEach((child,kk) => {
-                if (menus.includes(child.name)){
-                    constantRouterMap[k].children[kk].hidden = false;
-                }else{
-                    constantRouterMap[k].children[kk].hidden = true;
-                }
-            })
-        }
-    })
-    console.log('--xx-',constantRouterMap)
+const adjustRouter = function (menus, constantRouterMap) {
+    // 递归处理路由
+    function processRoutes(routes) {
+        routes.forEach(route => {
+            // 获取当前路由的名称
+            if (menus.includes(route.name)) {
+                route.fl_permission = 'Y';
+            } else {
+                route.fl_permission = 'N';
+            }
+
+            // 如果有子路由，递归处理
+            if (route.children && route.children.length > 0) {
+                processRoutes(route.children);
+            }
+        });
+    }
+    // 调用递归函数处理所有路由
+    processRoutes(constantRouterMap);
 }

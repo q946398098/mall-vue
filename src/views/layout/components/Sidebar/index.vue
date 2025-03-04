@@ -13,8 +13,10 @@
 <script setup>
 import SidebarItem from './SidebarItem.vue'
 import {onMounted, onUnmounted, computed, ref} from "vue";
-import {constantRouterMap} from "@/router/index.js";
 import {useLayoutStore} from "@/stores/layout.js";
+import {useUserInfoStore} from "@/stores/user.js"
+
+const userInfoStore = useUserInfoStore();
 
 const layoutStore = useLayoutStore();
 
@@ -35,7 +37,7 @@ onUnmounted(() => {
 });
 
 const routes = computed(() => {
-   return constantRouterMap
+   return userInfoStore.userInfo.menus;
 });
 
 const isCollapse = computed(() => {

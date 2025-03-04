@@ -63,6 +63,7 @@ const handleLogin = (loginFormRef) => {
         if (res.code === 200){
           userStore.setToken(res.data.tokenHead + res.data.token);
           router.push('/');
+
         }
       })
     }
